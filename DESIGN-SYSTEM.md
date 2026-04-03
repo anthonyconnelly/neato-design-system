@@ -163,3 +163,59 @@ Do not create new UI primitives without adding them here first.
 - [ ] Currency/date/number formatting matches existing patterns
 - [ ] Loading states use Skeleton, not spinners
 - [ ] Page structure follows existing layout (header -> summary cards -> detail sections)
+
+---
+
+## Dark Mode
+
+The design system supports light and dark themes out of the box.
+
+### Setup (Tailwind v4)
+
+Add the dark mode variant to your `globals.css` (already included in `styles/globals.css`):
+
+```css
+@custom-variant dark (&:where(.dark, .dark *));
+```
+
+### Theme Provider
+
+Copy `providers/theme-provider.tsx` into your project. It provides:
+
+- `useTheme()` hook with `theme`, `resolvedTheme`, `setTheme`, `toggleTheme`
+- Three modes: `light`, `dark`, `system` (respects OS preference)
+- Persists to `localStorage`
+- No flash on page load (add the inline script from `templates/layout.tsx`)
+
+### Color Palette
+
+| Token | Light | Dark |
+|-------|-------|------|
+| `--background` | `#ffffff` | `#0a0a0a` |
+| `--surface` | `#ffffff` | `#141414` |
+| `--surface-elevated` | `#f9fafb` | `#1c1c1c` |
+| `--border` | `#e5e7eb` | `#2a2a2a` |
+| `--text-primary` | `#111827` | `#f5f5f5` |
+| `--text-secondary` | `#4b5563` | `#a0a0a0` |
+| `--text-muted` | `#6b7280` | `#666666` |
+
+### Class Patterns
+
+| Light | Dark |
+|-------|------|
+| `bg-white` | `dark:bg-[#141414]` |
+| `bg-gray-50` | `dark:bg-[#1C1C1C]` |
+| `border-gray-200` | `dark:border-[#2A2A2A]` |
+| `text-gray-900` | `dark:text-gray-100` |
+| `text-gray-600` | `dark:text-gray-400` |
+| `hover:bg-gray-50` | `dark:hover:bg-[#1C1C1C]` |
+| `text-red-600` | `dark:text-red-400` |
+| `text-green-600` | `dark:text-green-400` |
+
+### Logo
+
+In dark mode, invert the Neato logo:
+
+```html
+<Image className="dark:invert dark:brightness-200" ... />
+```

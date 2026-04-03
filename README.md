@@ -99,3 +99,14 @@ When the design system evolves:
 - [ ] Modal/Dialog component
 - [ ] Toast/notification component
 - [ ] Dark mode (if ever needed)
+
+## Dark Mode
+
+Full dark mode support included. See `DESIGN-SYSTEM.md` for implementation details.
+
+### Quick Start
+
+1. Use `styles/globals.css` (includes `@custom-variant dark` and CSS variables)
+2. Add `providers/theme-provider.tsx` to your project
+3. Wrap your app in `<ThemeProvider>` (see `templates/layout.tsx`)
+4. All components include `dark:` variants automatically

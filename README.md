@@ -77,6 +77,10 @@ Follow the design system in DESIGN-SYSTEM.md. Use only the components in src/com
 | `Badge` | Status indicators (green/amber/red/gray) | `components/badge.tsx` |
 | `Button` | Actions (primary/secondary/ghost) | `components/button.tsx` |
 | `Card` | Content containers | `components/card.tsx` |
+| `InlineNotice` | Contextual notices, empty states, banners | `components/inline-notice.tsx` |
+| `PageHeader` | Page title + subtitle + actions slot | `components/page-header.tsx` |
+| `PageShell` | Page layout wrapper (max-width, padding, bg) | `components/page-shell.tsx` |
+| `SegmentedControl` | Tab-style filter/toggle controls | `components/segmented-control.tsx` |
 | `Select` | Dropdown inputs | `components/select.tsx` |
 | `Skeleton` | Loading states (pulse animation) | `components/skeleton.tsx` |
 | `Table` | Tabular data (TableContainer, Table, Th, Td) | `components/table.tsx` |

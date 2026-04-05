@@ -117,7 +117,62 @@ Documented primitives and intended usage:
 - Base style: `animate-pulse rounded-md bg-gray-200`.
 - Use Skeleton placeholders instead of spinners.
 
+7. **InlineNotice** (`inline-notice.tsx`)
+- Purpose: contextual notices, empty states, sandbox/warning banners.
+- Props: `tone` (`neutral | info | warning | error`), `children`, `className`.
+- Tones:
+  - `neutral`: `border-gray-200 bg-white dark:border-[#2A2A2A] dark:bg-[#141414]`
+  - `info`: `border-blue-200 bg-blue-50 dark:border-blue-900/40 dark:bg-blue-900/20`
+  - `warning`: `border-amber-200 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-900/20`
+  - `error`: `border-red-200 bg-red-50 dark:border-red-900/40 dark:bg-red-900/20`
+- Use for: empty list states, sandbox mode notices, non-blocking alerts.
+- Example: `<InlineNotice tone="warning">This app is in sandbox mode.</InlineNotice>`
+
+8. **SegmentedControl / SegmentedControlButton** (`segmented-control.tsx`)
+- Purpose: tab-style filter/toggle controls (e.g. All / Issues / Matched).
+- `SegmentedControl`: pill-shaped container.
+- `SegmentedControlButton`: individual option. Pass `active={true}` for the selected state.
+- Example:
+  ```tsx
+  <SegmentedControl>
+    <SegmentedControlButton active={filter === "all"} onClick={() => setFilter("all")}>All</SegmentedControlButton>
+    <SegmentedControlButton active={filter === "issues"} onClick={() => setFilter("issues")}>Issues</SegmentedControlButton>
+  </SegmentedControl>
+  ```
+
 Do not create new UI primitives without adding them here first.
+
+## Layout Components (`src/components/layout/`)
+
+These are structural layout wrappers — use them on every page, no exceptions.
+
+1. **PageShell** (`page-shell.tsx`)
+- Purpose: standardizes max-width, padding, and page background across all pages.
+- Props: `children`, `compact` (bool, reduces vertical padding), `className`, `containerClassName`.
+- Default: `max-w-[1440px]`, `px-4 sm:px-6 lg:px-10`, `py-6 sm:py-8`.
+- Compact: `py-4 sm:py-5` — use for pages where vertical space is premium.
+- Every page must be wrapped in `<PageShell>`. No orphan pages with custom padding.
+- Example:
+  ```tsx
+  <PageShell>
+    <PageHeader title="Dashboard" description="Monitor listing health." />
+    {/* page content */}
+  </PageShell>
+  ```
+
+2. **PageHeader** (`page-header.tsx`)
+- Purpose: standardized page title, subtitle, and optional actions slot.
+- Props: `title` (string), `description` (string), `actions` (ReactNode), `backLink` (`{ href, label }`).
+- `backLink`: renders a small link above the title for drill-down pages (e.g. "← Variations").
+- Example:
+  ```tsx
+  <PageHeader
+    title="Catalog Manager"
+    description="Review and edit your product catalog."
+    actions={<Button variant="primary">Sync</Button>}
+  />
+  ```
+- Use on every page immediately inside `PageShell`, before any content.
 
 ## Navigation
 

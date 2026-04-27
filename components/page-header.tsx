@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
 
-import { cn } from "@/lib/utils";
+import { cn } from "../utils/utils";
 
 type PageHeaderProps = {
   title: string;
@@ -19,9 +18,9 @@ export function PageHeader({ title, description, actions, className, backLink }:
     <header className={cn("flex flex-wrap items-start justify-between gap-3", className)}>
       <div className="space-y-1">
         {backLink ? (
-          <Link href={backLink.href} className="inline-flex items-center text-sm text-blue-600 hover:underline dark:text-blue-400">
+          <a href={backLink.href} className="inline-flex items-center text-sm text-blue-600 hover:underline dark:text-blue-400">
             {backLink.label}
-          </Link>
+          </a>
         ) : null}
         <h1 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">{title}</h1>
         <p className="max-w-3xl text-sm text-gray-500 dark:text-gray-400">{description}</p>

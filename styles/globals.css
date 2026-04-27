@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/*
+  Dark mode is class based. Apps enable it by applying class="dark" to a root
+  element, and components should use Tailwind dark: utilities instead of
+  hardcoded dark hex values such as dark:bg-[#141414].
+*/
 @custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {

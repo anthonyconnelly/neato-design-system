@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "../utils/utils";
 
 type PageShellProps = {
   children: ReactNode;
@@ -11,7 +11,7 @@ type PageShellProps = {
 
 export function PageShell({ children, className, containerClassName, compact = false }: PageShellProps) {
   return (
-    <main className={cn("min-h-screen w-full bg-gray-50 transition-colors duration-200 dark:bg-[#0A0A0A]", className)}>
+    <main className={cn("min-h-screen w-full bg-gray-50 transition-colors duration-200 dark:bg-neutral-950", className)}>
       <div
         className={cn(
           "mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-10",
